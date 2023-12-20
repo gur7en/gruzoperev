@@ -1,21 +1,3 @@
-// admin
-
-@startuml
-left to right direction
-
-actor "Администратор" as fc
-
-usecase "Войти в систему\n как водитель" as login_drv
-usecase "Войти в систему\n как логист" as login_logi
-usecase "Войти в систему\n как бухгалтер" as login_acc
-usecase "Выйти из системы" as logout
-
-fc --> login_drv
-fc --> login_logi
-fc --> login_acc
-fc --> logout
-@enduml
-
 //=============================================================================
 // logistician
 
