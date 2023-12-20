@@ -1,0 +1,156 @@
+//=============================================================================
+// admin
+@startuml
+state "Окно входа" as login
+state "Окно полномочий" as powers
+state "Домашнее окно" as home
+
+login : Пользователь может:
+login : - ввести логин
+login : - ввести пароль
+login : - войти в систему
+
+powers : Пользователь может:
+powers : - выбрать роль в системе
+
+home : Пользователь может:
+home : - выполнять все действия, доступные пользователям с выбранной ролью
+
+[*] -down-> login
+login -down-> powers : Нажат "Вход"
+powers -down-> home : Нажат "Принять"
+login -left-> [*] : Окно закрыто
+@enduml
+
+//=============================================================================
+// logistician
+@startuml
+state "Окно входа" as login
+state "Домашнее окно" as home
+state "Профиль" as profile
+state "Маршруты" as routes
+state "Перевозки" as transportations
+state "Водители" as drivers
+
+login : Пользователь может:
+login : - ввести логин
+login : - ввести пароль
+login : - войти в систему
+
+profile : Пользователь может:
+profile : - просмотреть свои ФИО
+profile : - сменить пароль
+profile : - выйти из сессии
+
+home : Пользователь может:
+home : - открыть окно профиля
+home : - открыть окно маршрутов
+home : - открыть окно перевозок
+
+routes : Пользователь может:
+routes : - просматривать список маршрутов
+routes : - редактировать маршруты
+routes : - добавлять маршруты
+routes : - удалять маршруты
+
+transportations : Пользователь может:
+transportations : - просматривать список перевозок
+transportations : - назначать перевозку одному водителю
+transportations : - назначать перевозку двум водителям
+transportations : - завершить перевозку
+transportations : - отменить перевозку
+
+drivers : Пользователь может:
+drivers : - просматривать список водителей
+drivers : - просматривать зарплату водителей
+
+[*] -down-> login
+login -right-> home : Нажат "Вход"
+home -up-> profile : Нажат "Профиль"
+home -down-> routes : Нажат "Маршруты"
+home -right-> drivers : Нажат "Водители"
+home --> transportations : Нажат "Перевозки"
+profile --> login : Нажат "Выйти из системы"
+login -left-> [*] : Окно закрыто
+
+@enduml
+
+//=============================================================================
+// accountant
+@startuml
+state "Окно входа" as login
+state "Домашнее окно" as home
+state "Профиль" as profile
+state "Водители" as drivers
+state "Логисты" as logisticians
+
+login : Пользователь может:
+login : - ввести логин
+login : - ввести пароль
+login : - войти в систему
+
+profile : Пользователь может:
+profile : - просмотреть свои ФИО
+profile : - сменить пароль
+profile : - выйти из сессии
+
+home : Пользователь может:
+home : - открыть окно профиля
+home : - открыть окно списка водителей
+home : - открыть окно списка логистов
+
+drivers : Пользователь может:
+drivers : - просматривать список водителей
+drivers : - просматривать зарплату водителей
+drivers : - добавлять водителей
+drivers : - удалять водителей
+
+logisticians : Пользователь может:
+logisticians : - просматривать список логистов
+logisticians : - добавлять логистов
+logisticians : - удалять логистов
+
+[*] -down-> login
+login -right-> home : Нажат "Вход"
+home -up-> profile : Нажат "Профиль"
+home --> drivers : Нажат "Водители"
+home --> logisticians : Нажат "Логисты"
+profile --> login : Нажат "Выйти из системы"
+login -left-> [*] : Окно закрыто
+
+@enduml
+
+//=============================================================================
+// driver
+@startuml
+state "Окно входа" as login
+state "Домашнее окно" as home
+state "Профиль" as profile
+state "Перевозки" as transportations
+
+login : Пользователь может:
+login : - ввести логин
+login : - ввести пароль
+login : - войти в систему
+
+profile : Пользователь может:
+profile : - просмотреть свои ФИО
+profile : - сменить пароль
+profile : - выйти из сессии
+
+home : Пользователь может:
+home : - открыть окно профиля
+home : - открыть окно перевозок
+
+transportations : Пользователь может:
+transportations : - просматривать список своих перевозок
+transportations : - рассчитать свою зарплату
+
+[*] -down-> login
+login -right-> home : Нажат "Вход"
+home -up-> profile : Нажат "Профиль"
+home --> transportations : Нажат "Перевозки"
+profile --> login : Нажат "Выйти из системы"
+login -left-> [*] : Окно закрыто
+
+@enduml

@@ -1,0 +1,93 @@
+// admin
+
+@startuml
+left to right direction
+
+actor "Администратор" as fc
+
+usecase "Войти в систему\n как водитель" as login_drv
+usecase "Войти в систему\n как логист" as login_logi
+usecase "Войти в систему\n как бухгалтер" as login_acc
+usecase "Выйти из системы" as logout
+
+fc --> login_drv
+fc --> login_logi
+fc --> login_acc
+fc --> logout
+@enduml
+
+//=============================================================================
+// logistician
+
+@startuml
+left to right direction
+
+actor "Логист" as fc
+
+usecase "Войти в систему" as login
+usecase "Назначить перевозку\n водителю" as add_transp
+usecase "Назначить перевозку\n двум водителям" as add_transp_2
+usecase "Завершить перевозку" as final_transp
+usecase "Отменить перевозку" as cancel_transp
+usecase "Добавить маршрут" as add_route
+usecase "Редактировать маршрут" as edit_route
+usecase "Удалить маршрут" as del_route
+usecase "Выйти из системы" as logout
+
+fc --> login
+fc --> add_transp
+fc --> add_transp_2
+fc --> final_transp
+fc --> cancel_transp
+fc --> add_route
+fc --> edit_route
+fc --> del_route
+fc --> logout
+@enduml
+
+//=============================================================================
+// accountant
+@startuml
+left to right direction
+
+actor "Отдел кадров\n Бухгалтерия" as fc
+
+usecase "Войти в систему" as login
+usecase "Добавить водителя" as add_drv
+usecase "Удалить водителя" as del_drv
+usecase "Расчёт зарплаты\n водителя" as salary_drv
+usecase "Получить список\n водителей" as list_drv
+usecase "Добавить логиста" as add_logi
+usecase "Удалить логиста" as del_logi
+usecase "Получить список\n логистов" as list_logi
+usecase "Выйти из системы" as logout
+
+fc --> login
+fc --> add_drv
+fc --> del_drv
+fc --> salary_drv
+fc --> list_drv
+fc --> add_logi
+fc --> del_logi
+fc --> list_logi
+fc --> logout
+@enduml
+
+//=============================================================================
+// driver
+@startuml
+left to right direction
+
+actor "Водитель" as fc
+
+usecase "Войти в систему" as login
+usecase "Посмотреть\n свои перевозки" as view_transp
+usecase "Посмотреть\n свою зарплату" as view_salary
+usecase "Выйти из системы" as logout
+
+fc --> login
+fc --> view_transp
+fc --> view_salary
+fc --> logout
+@enduml
+
